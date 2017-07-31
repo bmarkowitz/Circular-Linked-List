@@ -43,7 +43,7 @@ void createList(int n)
     
     newNode = getNode();
     
-    if(start == nullptr)
+    if(start == nullptr && n > 0)
     {
         start = newNode;
         newNode->next = start;

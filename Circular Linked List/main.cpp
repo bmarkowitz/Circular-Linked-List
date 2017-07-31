@@ -12,7 +12,11 @@ using namespace std;
 
 //function prototypes
 struct node* getNode();
+void createList(int);
+
+
 void insertAtBeg();
+void insertAtEnd();
 
 //node structure
 struct node {
@@ -30,6 +34,40 @@ int main() {
     
     return 0;
 }
+
+
+void createList(int n)
+{
+    node* newNode;
+    node* temp = start;
+    
+    newNode = getNode();
+    
+    if(start == nullptr)
+    {
+        start = newNode;
+        newNode->next = start;
+    }
+    else
+    {
+        for (int i = 0; i < n; i++) {
+            while(temp->next != start)
+            {
+                temp = temp->next;
+            }
+            temp->next = newNode;
+            newNode = start;
+        }
+    }
+}
+
+
+
+
+
+
+
+
 
 
 struct node* getNode()

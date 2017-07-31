@@ -30,6 +30,13 @@ node* start = nullptr;
 //main function
 int main() {
     
+    int choice;
+    
+    cout << "Enter the number of nodes to create in the list: ";
+    cin >> choice;
+    
+    createList(choice);
+    
     
     
     return 0;
@@ -39,26 +46,28 @@ int main() {
 void createList(int n)
 {
     node* newNode;
-    node* temp = start;
+    node* temp;
     
-    newNode = getNode();
-    
-    if(start == nullptr && n > 0)
-    {
-        start = newNode;
-        newNode->next = start;
-    }
-    else
-    {
-        for (int i = 0; i < n; i++) {
-            while(temp->next != start)
-            {
+    for (int i = 0; i <n; i++) {
+        newNode = getNode();
+        if(start == nullptr)
+        {
+            newNode->next = start;
+            start = newNode;
+        }
+        else
+        {
+            temp = start;
+            while (temp->next != nullptr) {
                 temp = temp->next;
             }
             temp->next = newNode;
             newNode = start;
         }
     }
+    
+    
+    
 }
 
 

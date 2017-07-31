@@ -7,9 +7,38 @@
 //
 
 #include <iostream>
+using namespace std;
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+struct node* getNode();
+
+//node structure
+struct node {
+    int data;
+    node* next;
+};
+
+node* start = nullptr;
+
+
+//main function
+int main() {
+    
+    
+    
     return 0;
+}
+
+
+struct node* getNode()
+{
+    node* newNode;
+    newNode = new node;
+    
+    cout << "Enter data to store in the node: ";
+    cin >> newNode->data;
+    
+    start = newNode;
+    newNode->next = start;
+    
+    return newNode;
 }

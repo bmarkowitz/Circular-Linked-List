@@ -9,7 +9,10 @@
 #include <iostream>
 using namespace std;
 
+
+//function prototypes
 struct node* getNode();
+void insertAtBeg();
 
 //node structure
 struct node {
@@ -38,7 +41,30 @@ struct node* getNode()
     cin >> newNode->data;
     
     start = newNode;
-    newNode->next = start;
+    newNode->next = nullptr;
     
     return newNode;
+}
+
+void insertAtBeg()
+{
+    node* newNode = getNode();
+    
+    if(start == nullptr)
+    {
+        start = newNode;
+        return;
+    }
+    else if(start->next == nullptr)
+    {
+        newNode->next = start; //new node points to current start node
+        start->next = newNode; //current start points back to new node, which will be start
+        start = newNode; //new node becomes start
+        return;
+    }
+    else
+    {
+        newNode->next = start;
+        start = newNode;
+    }
 }

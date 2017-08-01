@@ -37,6 +37,8 @@ int main() {
     
     createList(choice);
     
+    insertAtEnd();
+    
     
     
     return 0;
@@ -45,7 +47,7 @@ int main() {
 
 void createList(int n)
 {
-    node* newNode;
+    node* newNode = nullptr;
     node* temp;
     
     for (int i = 0; i <n; i++) {
@@ -62,11 +64,9 @@ void createList(int n)
                 temp = temp->next;
             }
             temp->next = newNode;
-            newNode = start;
         }
     }
-    
-    
+    newNode->next = start;
     
 }
 
@@ -87,7 +87,6 @@ struct node* getNode()
     cout << "Enter data to store in the node: ";
     cin >> newNode->data;
     
-    start = newNode;
     newNode->next = nullptr;
     
     return newNode;
@@ -113,5 +112,27 @@ void insertAtBeg()
     {
         newNode->next = start;
         start = newNode;
+    }
+}
+
+void insertAtEnd()
+{
+    node* newNode = getNode();
+    node* temp;
+    
+    if(start == nullptr)
+    {
+        start = newNode;
+        newNode->next = start;
+    }
+    else
+    {
+        temp = start;
+        while(temp->next != start)
+        {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+        newNode->next = start;
     }
 }

@@ -18,6 +18,9 @@ void createList(int);
 void insertAtBeg();
 void insertAtEnd();
 
+void displayList();
+
+
 //node structure
 struct node {
     int data;
@@ -38,6 +41,8 @@ int main() {
     createList(choice);
     
     insertAtEnd();
+    
+    displayList();
     
     
     
@@ -134,5 +139,25 @@ void insertAtEnd()
         }
         temp->next = newNode;
         newNode->next = start;
+        cout << "The data was inserted at the end of the list.\n";
+    }
+}
+
+void displayList()
+{
+
+    node* temp;
+    if(start == nullptr)
+    {
+        cout << "The list is empty.";
+        return;
+    }
+    else
+    {
+        temp = start;
+        do {
+            cout << temp->data << endl;
+            temp = temp->next;
+        } while (temp != start);
     }
 }
